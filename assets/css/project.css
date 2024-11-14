@@ -1,0 +1,484 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Setup */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Discount Banner */
+.discount-banner {
+    background-color: #ff6347;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 1.2rem;
+}
+
+
+
+
+/* Navigation */
+header {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 10px 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #000000;
+}
+
+/* Logo */
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ff6347;
+    cursor: pointer;
+}
+
+.logo span {
+    color: #000000;
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 500;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+/* Hover Effect for Links */
+.nav-links a:hover {
+    color: #ff6347;
+}
+
+/* Underline Animation */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    background-color: #ff6347;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Mobile Responsive */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #000000;
+    margin: 4px;
+    transition: 0.4s;
+}
+
+.nav-links.mobile {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    color: white;
+    background: #3c3c3c;
+    padding: 10px 20px;
+    border-radius: 8px;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    width: 250px;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.nav-links.mobile.show {
+    opacity: 1;
+    transform: translateX(0);
+
+}
+
+.nav-links.mobile a {
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+
+/* Mobile Menu Toggle Animation */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links.mobile.show {
+        display: flex;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Product Detail Section */
+.product-detail {
+    padding: 80px 20px;
+    background-color: #fff;
+}
+
+.product-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.product-main-image {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+.product-main-image img {
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.5s ease;
+}
+
+.product-main-image img.loaded {
+    opacity: 1;
+}
+
+/* Hover Effect for Zoom */
+.product-main-image:hover img {
+    transform: scale(1.2);
+}
+
+.product-info {
+    max-width: 500px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.product-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.product-location,
+.product-price {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.product-price .discount-price {
+    text-decoration: line-through;
+    color: #aaa;
+    margin-left: 10px;
+}
+
+.product-description {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.product-rating span {
+    font-size: 1.5rem;
+    color: gold;
+    margin-bottom: 20px;
+}
+
+.product-button {
+    padding: 10px 20px;
+    background-color: #ff6347;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.product-button:hover {
+    background-color: #e55337;
+}
+
+/* Gallery Section */
+.product-gallery {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.product-gallery h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.gallery-images {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.gallery-images img {
+    width: 30%;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.gallery-images img:hover {
+    transform: scale(1.05);
+}
+
+/* Testimonials Section */
+.testimonials {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.testimonial-carousel {
+    display: flex;
+    overflow: hidden;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.testimonial-item {
+    width: 300px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+}
+
+.testimonial-carousel:hover .testimonial-item {
+    transform: translateX(-10px);
+}
+
+/* Comment Section */
+.product-comments {
+    margin-top: 40px;
+}
+
+.add-comment textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.submit-comment {
+    padding: 10px 20px;
+    background-color: #ff6347;
+    color: white;
+    border-radius: 5px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.submit-comment:hover {
+    background-color: #e55337;
+}
+
+/* General Animation Setup */
+.section-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0s;
+}
+
+/* Keyframes for fade-in and slide-up animation */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Delay animations for each element with a staggered effect */
+.section-animate:nth-child(1) {
+    animation-delay: 0s;
+    /* No delay for the first element */
+}
+
+.section-animate:nth-child(2) {
+    animation-delay: 0.3s;
+    /* 300ms delay for the second element */
+}
+
+.section-animate:nth-child(3) {
+    animation-delay: 0.6s;
+    /* 600ms delay for the third element */
+}
+
+.section-animate:nth-child(4) {
+    animation-delay: 0.9s;
+    /* 900ms delay for the fourth element */
+}
+
+/* Add more as needed for additional elements */
+/* Media Queries */
+
+/* Medium screens (tablets) */
+@media (max-width: 1024px) {
+    .product-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .product-info {
+        max-width: 100%;
+        padding-left: 0;
+    }
+
+    .product-title {
+        font-size: 2rem;
+    }
+
+    .product-location,
+    .product-price {
+        font-size: 1.1rem;
+    }
+
+    .product-description {
+        font-size: 1rem;
+    }
+
+    .product-gallery {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .gallery-img {
+        max-width: 80%;
+    }
+
+    .testimonial-carousel {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Small screens (mobile devices) */
+@media (max-width: 600px) {
+    .product-container {
+        padding: 15px;
+    }
+
+    .product-info {
+        padding-left: 0;
+    }
+
+    .product-title {
+        font-size: 1.8rem;
+    }
+
+    .product-location,
+    .product-price {
+        font-size: 1rem;
+    }
+
+    .product-description {
+        font-size: 0.9rem;
+    }
+
+    .product-button {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+
+    .product-gallery {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .gallery-img {
+        max-width: 100%;
+    }
+
+    .testimonial-carousel {
+        flex-direction: column;
+    }
+}
+
+/* Zoom Hover Effect for Gallery Images */
+@media (min-width: 600px) {
+    .gallery-img:hover {
+        transform: scale(1.1);
+    }
+}
