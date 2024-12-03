@@ -1,33 +1,48 @@
-// Toggle the mobile navigation menu when the hamburger icon is clicked
-document.querySelector('.hamburger').addEventListener('click', function (event) {
-    // Prevent click event from bubbling up to the document
-    event.stopPropagation();
+// JavaScript for Navigation and Discount Banner
 
-    // Toggle 'active' class on the hamburger icon to animate it into an 'X' shape
-    this.classList.toggle('active');
-
-    // Toggle 'show' class on the navigation links to display the mobile menu
-    document.querySelector('.nav-links.mobile').classList.toggle('show');
+// Ensure the discount banner appears with an animation
+document.addEventListener("DOMContentLoaded", () => {
+    const discountBanner = document.querySelector(".discount-banner");
+    setTimeout(() => {
+        discountBanner.classList.add("show-banner");
+    }, 500);
 });
 
-// Close the mobile menu if user clicks anywhere outside of it
-document.addEventListener('click', function (event) {
-    const navMenu = document.querySelector('.nav-links.mobile');
-    const hamburger = document.querySelector('.hamburger');
+// Handle responsive navigation menu toggle
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+const menuIcon = document.querySelector(".menu-icon");
 
-    // Check if the click is outside the nav menu and hamburger
-    if (!navMenu.contains(event.target) && !hamburger.contains(event.target)) {
-        // Close the mobile menu and reset hamburger icon
-        navMenu.classList.remove('show');
-        hamburger.classList.remove('active');
+// Toggle menu for mobile view
+menuToggle.addEventListener("change", () => {
+    if (menuToggle.checked) {
+        navLinks.style.left = "0";
+    } else {
+        navLinks.style.left = "-100%";
     }
 });
 
-// Prevent event from closing the nav when clicking inside the nav or hamburger
-document.querySelector('.nav-links.mobile').addEventListener('click', function (event) {
-    event.stopPropagation();
+// Close the mobile menu when clicking a link
+document.querySelectorAll(".nav-links a").forEach((link) => {
+    link.addEventListener("click", () => {
+        if (menuToggle.checked) {
+            menuToggle.checked = false;
+            navLinks.style.left = "-100%";
+        }
+    });
 });
 
+// Add scroll effect for sticky navigation
+window.addEventListener("scroll", () => {
+    const nav = document.querySelector("nav");
+    if (window.scrollY > 50) {
+        nav.style.backgroundColor = "#ffffff";
+        nav.style.boxShadow = "0px 2px 5px rgba(0, 0, 0, 0.1)";
+    } else {
+        nav.style.backgroundColor = "transparent";
+        nav.style.boxShadow = "none";
+    }
+});
 
 
 
@@ -117,21 +132,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Mobile Menu Toggle
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navLinks.classList.toggle('show');
-});
-
-// Parallax Scrolling Effect for Hero Background
-window.addEventListener('scroll', function () {
-    const hero = document.querySelector('.hero');
-    const offset = window.pageYOffset;
-    hero.style.backgroundPositionY = offset * 0.5 + 'px';
-});
-
 
 
 // JavaScript for the Contact Form Validation and Animation
